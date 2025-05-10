@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personaliza tu Carta para el Día de las Madres</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fce4ec;
+            color: #333;
+        }
+        
+        h1 {
+            color: #e91e63;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .form-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #e91e63;
+        }
+        
+        input[type="text"],
+        input[type="url"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ffcdd2;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .note {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .submit-btn {
+            background: #e91e63;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto 0;
+            transition: background 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background: #c2185b;
+        }
+        
+        .price {
+            text-align: center;
+            font-size: 20px;
+            margin: 20px 0;
+            color: #e91e63;
+            font-weight: bold;
+        }
+        
+        .instructions {
+            background: #f8bbd0;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Personaliza tu Carta para el Día de las Madres</h1>
+        
+        <div class="price">Costo: $50 MXN</div>
+        
+        <div class="instructions">
+            <p><strong>Instrucciones:</strong> Completa este formulario con los datos para tu carta personalizada. 
+            Una vez que envíes el formulario y realices el pago, recibirás tu carta digital en menos de 24 horas.</p>
+            <p><strong>Método de pago:</strong> Transferencia bancaria o Mercado Pago (te enviaremos los datos después de enviar el formulario).</p>
+        </div>
+        
+        <form id="cartaForm">
+            <div class="form-group">
+                <label for="recipient">Nombre de la mamá homenajeada:</label>
+                <input type="text" id="recipient" name="recipient" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="header">Encabezado personalizado (ej. "Para la mejor mamá del mundo"):</label>
+                <input type="text" id="header" name="header" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="image1">URL de la primera foto (Google Photos):</label>
+                <input type="url" id="image1" name="image1" required>
+                <p class="note">Cómo obtener el enlace: En Google Photos, selecciona la foto → Compartir → Crear enlace → Copiar</p>
+            </div>
+            
+            <div class="form-group">
+                <label for="image2">URL de la segunda foto (opcional):</label>
+                <input type="url" id="image2" name="image2">
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Mensaje principal:</label>
+                <textarea id="message" name="message" required></textarea>
+                <p class="note">Escribe desde el corazón lo que quieres decirle (máx. 200 palabras)</p>
+            </div>
+            
+            <div class="form-group">
+                <label for="additionalMessage">Frase especial adicional (opcional):</label>
+                <input type="text" id="additionalMessage" name="additionalMessage">
+            </div>
+            
+            <div class="form-group">
+                <label for="sender">Tu nombre:</label>
+                <input type="text" id="sender" name="sender" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="relationship">Tu relación con la mamá:</label>
+                <select id="relationship" name="relationship" required>
+                    <option value="">Selecciona...</option>
+                    <option value="Hijo">Hijo</option>
+                    <option value="Hija">Hija</option>
+                    <option value="Esposo">Esposo</option>
+                    <option value="Familiar">Familiar</option>
+                    <option value="Amigo/a">Amigo/a</option>
+                    <option value="Otro">Otro</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Tu correo electrónico:</label>
+                <input type="text" id="email" name="email" required>
+                <p class="note">Aquí te enviaremos la carta terminada</p>
+            </div>
+            
+            <div class="form-group">
+                <label for="whatsapp">Número de WhatsApp (opcional):</label>
+                <input type="text" id="whatsapp" name="whatsapp" placeholder="Ej. 5512345678">
+                <p class="note">Para enviarte recordatorios o preguntas sobre tu pedido</p>
+            </div>
+            
+            <button type="submit" class="submit-btn">Enviar Pedido</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('cartaForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Recopilar los datos del formulario
+            const formData = {
+                recipient: document.getElementById('recipient').value,
+                header: document.getElementById('header').value,
+                image1: document.getElementById('image1').value,
+                image2: document.getElementById('image2').value || '',
+                message: document.getElementById('message').value,
+                additionalMessage: document.getElementById('additionalMessage').value || '',
+                sender: document.getElementById('sender').value,
+                relationship: document.getElementById('relationship').value,
+                email: document.getElementById('email').value,
+                whatsapp: document.getElementById('whatsapp').value || ''
+            };
+            
+            // Aquí normalmente enviarías los datos a un servidor
+            // Para GitHub Pages, usaremos una solución alternativa
+            
+            // Guardar los datos en localStorage (solución temporal)
+            localStorage.setItem('ultimoPedido', JSON.stringify(formData));
+            
+            // Redirigir a página de instrucciones de pago
+            window.location.href = "gracias.html";
+        });
+    </script>
+</body>
+</html>
